@@ -64,7 +64,7 @@ const Logo = ({ className = "h-8 w-auto", withText = true }) => {
       {withText && (
         <div className="flex flex-col justify-center -space-y-0.5">
           <span className="font-bold text-2xl tracking-tight leading-none text-white">
-            Mon<span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-500">vix</span>
+            Price<span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-500">lyt</span>
           </span>
         </div>
       )}
