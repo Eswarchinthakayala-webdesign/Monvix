@@ -190,7 +190,7 @@ const LandingPage = () => {
                   </div>
                   <div className="h-4 w-px bg-white/10 mx-2" />
                   <div className="flex items-center gap-2 text-xs font-mono text-muted-foreground/70">
-                    <Lock className="size-3" /> monvix.secure/dashboard
+                    <Lock className="size-3" /> pricelyt.secure/dashboard
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
@@ -399,7 +399,7 @@ const LandingPage = () => {
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
           
             <div className="text-muted-foreground text-sm">
-                &copy; {new Date().getFullYear()} Monvix. All rights reserved.
+                &copy; {new Date().getFullYear()} Pricelyt. All rights reserved.
             </div>
             <div className="flex gap-6">
                 <a href="#" className="text-muted-foreground hover:text-white transition-colors">Twitter</a>

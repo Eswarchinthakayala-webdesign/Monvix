@@ -41,7 +41,7 @@ const LoginPage = () => {
             </div>
           <CardTitle className="text-2xl font-bold tracking-tight">Welcome back</CardTitle>
           <CardDescription className="text-base">
-            Sign in to your Monvix account to start tracking prices.
+            Sign in to your Pricelyt account to start tracking prices.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4 pb-10 px-8">

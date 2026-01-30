@@ -41,7 +41,7 @@ const ProductCard = ({ product }) => {
             const url = window.URL.createObjectURL(blob);
             const link = document.createElement('a');
             link.href = url;
-            link.download = `monvix-${product.title.substring(0, 30).replace(/[^a-z0-9]/gi, '_').toLowerCase()}.jpg`;
+            link.download = `pricelyt-${product.title.substring(0, 30).replace(/[^a-z0-9]/gi, '_').toLowerCase()}.jpg`;
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
