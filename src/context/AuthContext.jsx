@@ -54,10 +54,42 @@ export const AuthProvider = ({ children }) => {
         const { error } = await supabase.auth.signInWithOAuth({
             provider: 'google',
             options: {
-                redirectTo: `${window.location.origin}/dashboard`
+                redirectTo: `${window.location.origin}/auth/callback`
             }
         });
         if(error) throw error;
+    };
+
+    const handleAuthCallback = async () => {
+        try {
+            const hash = window.location.hash;
+            if (!hash) throw new Error("No authentication details found");
+
+            const params = new URLSearchParams(hash.substring(1));
+            const access_token = params.get("access_token");
+            const refresh_token = params.get("refresh_token");
+            const expires_in = params.get("expires_in");
+            const token_type = params.get("token_type");
+
+            if (!access_token || !refresh_token) throw new Error("Missing tokens in URL");
+
+            const { error } = await supabase.auth.setSession({
+                access_token,
+                refresh_token,
+                expires_in: expires_in ? Number(expires_in) : undefined,
+                token_type
+            });
+
+            if (error) throw error;
+
+            // Clear hash
+            window.history.replaceState(null, "", window.location.pathname + window.location.search);
+
+            return { success: true };
+        } catch (error) {
+            console.error("Auth callback error:", error);
+            return { success: false, error: error.message };
+        }
     };
 
     const logout = async () => {
@@ -66,7 +98,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ user, isAuthenticated, loading, loginWithGoogle, logout }}>
+        <AuthContext.Provider value={{ user, isAuthenticated, loading, loginWithGoogle, logout, handleAuthCallback }}>
             {children}
         </AuthContext.Provider>
     );

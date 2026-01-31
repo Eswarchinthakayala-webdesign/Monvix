@@ -14,6 +14,7 @@ import LoginPage from './pages/LoginPage'
 import SignupPage from './pages/SignupPage'
 import { AuthProvider } from './context/AuthContext'
 import ProtectedRoute from './components/ProtectedRoute'
+import AuthCallback from './pages/AuthCallback'
 
 const router=createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router=createBrowserRouter([
       {
         path:"/signup",
         element:<SignupPage/>
+      },
+      {
+        path:"/auth/callback",
+        element:<AuthCallback/>
       },
       {
         path:"/dashboard",
