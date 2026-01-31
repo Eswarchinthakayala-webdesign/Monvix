@@ -34,10 +34,6 @@ const router=createBrowserRouter([
         element:<SignupPage/>
       },
       {
-        path:"/auth/callback",
-        element:<AuthCallback/>
-      },
-      {
         path:"/dashboard",
         element:(
             <ProtectedRoute>
@@ -60,6 +56,11 @@ const router=createBrowserRouter([
                 <ScrapeDetailsPage/>
             </ProtectedRoute>
         )
+
+      },
+      {
+        path:"/auth/callback",
+        element:<AuthCallback/>
       },
       {
         path:"/product/:id/logs/:logId",
