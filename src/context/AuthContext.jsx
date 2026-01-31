@@ -51,10 +51,17 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     const loginWithGoogle = async () => {
+        // Prioritize environment variable for redirect URL, fallback to window.location.origin
+        // This helps when running in production but maybe window context is tricky, or allows override.
+        const origin = import.meta.env.VITE_SITE_URL ? import.meta.env.VITE_SITE_URL.replace(/\/$/, "") : window.location.origin;
+        const redirectUrl = `${origin}/auth/callback`;
+
+        console.log("Starting OAuth with redirect to:", redirectUrl);
+
         const { error } = await supabase.auth.signInWithOAuth({
             provider: 'google',
             options: {
-                redirectTo: `${window.location.origin}/auth/callback`
+                redirectTo: redirectUrl
             }
         });
         if(error) throw error;
